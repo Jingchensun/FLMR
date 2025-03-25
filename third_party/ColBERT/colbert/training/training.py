@@ -4,7 +4,9 @@ import random
 import torch.nn as nn
 import numpy as np
 
-from transformers import AdamW, get_linear_schedule_with_warmup
+# from transformers import AdamW, get_linear_schedule_with_warmup
+from torch.optim import AdamW
+from transformers import get_linear_schedule_with_warmup
 from colbert.infra import ColBERTConfig
 from colbert.training.rerank_batcher import RerankBatcher
 

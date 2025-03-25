@@ -171,7 +171,16 @@ def main(args):
         print("args.run_indexing is False, skipping indexing...")
 
     print("========= Loading pretrained model =========")
-    query_tokenizer = FLMRQueryEncoderTokenizer.from_pretrained(args.checkpoint_path, subfolder="query_tokenizer")
+    # 加载 text_config
+    from flmr.models.flmr.configuration_flmr import FLMRTextConfig
+    
+    text_config = FLMRTextConfig.from_pretrained(os.path.join(args.checkpoint_path, "query_tokenizer"))
+
+    # 传 text_config 进去
+    query_tokenizer = FLMRQueryEncoderTokenizer.from_pretrained(
+        args.checkpoint_path, subfolder="query_tokenizer", text_config=text_config
+    )
+    # query_tokenizer = FLMRQueryEncoderTokenizer.from_pretrained(args.checkpoint_path, subfolder="query_tokenizer")
     context_tokenizer = FLMRContextEncoderTokenizer.from_pretrained(
         args.checkpoint_path, subfolder="context_tokenizer"
     )

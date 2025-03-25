@@ -1,0 +1,16 @@
+python example_use_preflmr.py \
+            --use_gpu \
+            --index_root_path "." \
+            --index_name EVQA_PreFLMR_ViT-G \
+            --experiment_name EVQA \
+            --indexing_batch_size 64 \
+            --image_root_dir /rds/project/rds-hirYTW1FQIw/shared_space/vqa_data/KBVQA_data/EVQA/eval_image/ \
+            --dataset_hf_path BByrneLab/multi_task_multi_modal_knowledge_retrieval_benchmark_M2KR \
+            --dataset EVQA \
+            --use_split test \
+            --nbits 8 \
+            --Ks 1 5 10 20 50 100 500 \
+            --checkpoint_path LinWeizheDragon/PreFLMR_ViT-G \
+            --image_processor_name laion/CLIP-ViT-bigG-14-laion2B-39B-b160k \
+            --query_batch_size 8 \
+            --compute_pseudo_recall \
